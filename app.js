@@ -28,7 +28,7 @@ dotenv.config({ path: '.env.example' });
  * Controllers (route handlers).
  */
 const homeController = require('./controllers/home');
-// const userController = require('./controllers/user');
+const userController = require('./controllers/user');
 // const apiController = require('./controllers/api');
 // const contactController = require('./controllers/contact');
 
