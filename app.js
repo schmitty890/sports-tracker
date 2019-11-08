@@ -235,6 +235,10 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 // app.get('/auth/quickbooks/callback', passport.authorize('quickbooks', { failureRedirect: '/login' }), (req, res) => {
 //   res.redirect(req.session.returnTo);
 // });
+// show 404 page if no route has been hit
+app.get('*', (req, res) => {
+  res.render('pages/404');
+});
 
 /**
  * Error Handler.
