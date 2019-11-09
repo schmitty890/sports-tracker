@@ -1,1 +1,1 @@
-Sports Tracker
+Sports Tracker [![Build Status](https://travis-ci.com/schmitty890/sports-tracker.svg?branch=master)](https://travis-ci.com/schmitty890/sports-tracker)
