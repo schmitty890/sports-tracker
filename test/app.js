@@ -9,6 +9,14 @@ describe('GET /', () => {
   });
 });
 
+describe('GET /random-url', () => {
+  it('should return 200 OK', (done) => {
+    request(app)
+      .get('/asdf')
+      .expect(200, done);
+  });
+});
+
 // describe('GET /login', () => {
 //   it('should return 200 OK', (done) => {
 //     request(app)
@@ -94,13 +102,5 @@ describe('GET /', () => {
 //     request(app)
 //       .get('/api/upload')
 //       .expect(200, done);
-//   });
-// });
-
-// describe('GET /random-url', () => {
-//   it('should return 404', (done) => {
-//     request(app)
-//       .get('/reset')
-//       .expect(404, done);
 //   });
 // });
