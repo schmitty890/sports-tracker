@@ -1,50 +1,46 @@
 <div class="container">
-
-  <div class="card o-hidden border-0 shadow-lg my-5">
-    <div class="card-body p-0">
-      <!-- Nested Row within Card Body -->
-      <div class="row">
-        <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-        <div class="col-lg-7">
-          <div class="p-5">
-            <div class="text-center">
-              <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-            </div>
-            <form class="user">
-              <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name">
-                </div>
-                <div class="col-sm-6">
-                  <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">
-                </div>
-              </div>
-              <div class="form-group">
-                <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">
-              </div>
-              <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
-                </div>
-                <div class="col-sm-6">
-                  <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
-                </div>
-              </div>
-              <a href="/login" class="btn btn-primary btn-user btn-block">
-                Register Account
-              </a>
-            </form>
-            <hr>
-            <div class="text-center">
-              <a class="small" href="/forgot-password">Forgot Password?</a>
-            </div>
-            <div class="text-center">
-              <a class="small" href="/login">Already have an account? Login!</a>
-            </div>
-          </div>
-        </div>
+  <div class="pb-2 mt-2 mb-4 border-bottom">
+    <h3>Sign up</h3></div>
+  <form id="signup-form" method="POST">
+    <input type="hidden" name="_csrf">
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label font-weight-bold text-right" for="email">Email</label>
+      <div class="col-md-7">
+        <input class="form-control" type="email" name="email" id="email" placeholder="Email" autofocus="" required="">
       </div>
     </div>
-  </div>
-
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label font-weight-bold text-right">First Name</label>
+      <div class="col-md-7">
+        <input class="form-control" type="firstName" name="firstName" id="firstName" placeholder="Your First Name" autofocus="" required="">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label font-weight-bold text-right">Last Name</label>
+      <div class="col-md-7">
+        <input class="form-control" type="lastName" name="lastName" id="lastName" placeholder="Your Last Name" autofocus="" required="">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label font-weight-bold text-right">Team Name</label>
+      <div class="col-md-7">
+        <input class="form-control" type="teamName" name="teamName" id="teamName" placeholder="Your Team Name" autofocus="" required="">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label font-weight-bold text-right" for="password">Password</label>
+      <div class="col-md-7">
+        <input class="form-control" type="password" name="password" id="password" placeholder="Password" required="">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label font-weight-bold text-right" for="confirmPassword">Confirm Password</label>
+      <div class="col-md-7">
+        <input class="form-control" type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required="">
+      </div>
+    </div>
+    <div class="form-group offset-sm-3 col-md-7 pl-2">
+      <button class="btn btn-success" type="submit"><i class="fas fa-user-plus fa-sm"></i>Signup</button>
+    </div>
+  </form>
 </div>
