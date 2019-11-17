@@ -3,7 +3,15 @@
  * Home page.
  */
 exports.index = (req, res) => {
-  res.render('home', {
-    title: 'Home'
+  if (!req.user) {
+    return res.redirect('/login');
+  }
+  const hbsObject = {
+    user: req.user
+  };
+
+  res.render('index', {
+    title: 'Home',
+    hbsObject
   });
 };
