@@ -8,10 +8,10 @@ exports.index = (req, res) => {
   }
   const hbsObject = {
     user: req.user
-  }
+  };
 
   res.render('index', {
     title: 'Home',
-    hbsObject: hbsObject
+    hbsObject
   });
 };
