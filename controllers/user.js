@@ -19,7 +19,7 @@ exports.getLogin = (req, res) => {
   }
   res.render('account/login', {
     title: 'Login',
-    layout: 'blank' 
+    layout: 'blank'
   });
 };
 
