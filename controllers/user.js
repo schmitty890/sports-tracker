@@ -18,7 +18,8 @@ exports.getLogin = (req, res) => {
     return res.redirect('/');
   }
   res.render('account/login', {
-    title: 'Login'
+    title: 'Login',
+    layout: 'blank'
   });
 };
 
@@ -73,7 +74,8 @@ exports.getSignup = (req, res) => {
     return res.redirect('/');
   }
   res.render('account/signup', {
-    title: 'Create Account'
+    title: 'Create Account',
+    layout: 'blank'
   });
 };
 
@@ -123,8 +125,14 @@ exports.postSignup = (req, res, next) => {
  * Profile page.
  */
 exports.getAccount = (req, res) => {
+  const hbsObject = {
+    user: req.user,
+    pageHeading: 'Profile'
+  };
+
   res.render('account/profile', {
-    title: 'Account Management'
+    title: 'Account Management',
+    hbsObject
   });
 };
 
