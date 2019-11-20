@@ -141,6 +141,7 @@ exports.getAccount = (req, res) => {
  * Update profile information.
  */
 exports.postUpdateProfile = (req, res, next) => {
+  // console.log(req.body);
   const validationErrors = [];
   if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' });
 
@@ -154,10 +155,8 @@ exports.postUpdateProfile = (req, res, next) => {
     if (err) { return next(err); }
     if (user.email !== req.body.email) user.emailVerified = false;
     user.email = req.body.email || '';
-    user.profile.name = req.body.name || '';
-    user.profile.gender = req.body.gender || '';
-    user.profile.location = req.body.location || '';
-    user.profile.website = req.body.website || '';
+    user.firstName = req.body.firstName || '';
+    user.lastName = req.body.lastName || '';
     user.save((err) => {
       if (err) {
         if (err.code === 11000) {
@@ -166,6 +165,7 @@ exports.postUpdateProfile = (req, res, next) => {
         }
         return next(err);
       }
+      // console.log('Profile information has been updated.');
       req.flash('success', { msg: 'Profile information has been updated.' });
       res.redirect('/account');
     });
