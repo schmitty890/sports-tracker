@@ -268,7 +268,8 @@ exports.getReset = (req, res, next) => {
         return res.redirect('/forgot');
       }
       res.render('account/reset', {
-        title: 'Password Reset'
+        title: 'Password Reset',
+        layout: 'blank'
       });
     });
 };
@@ -342,7 +343,7 @@ exports.getVerifyEmail = (req, res, next) => {
 
   const sendVerifyEmail = (token) => {
     let transporter = nodemailer.createTransport({
-      service: 'SendGrid',
+      service: 'gmail',
       auth: {
         user: process.env.SENDGRID_USER,
         pass: process.env.SENDGRID_PASSWORD
@@ -350,9 +351,9 @@ exports.getVerifyEmail = (req, res, next) => {
     });
     const mailOptions = {
       to: req.user.email,
-      from: 'hackathon@starter.com',
-      subject: 'Please verify your email address on Hackathon Starter',
-      text: `Thank you for registering with hackathon-starter.\n\n
+      from: process.env.SENDGRID_USER,
+      subject: 'Please verify your email address on Sports Tracker',
+      text: `Thank you for registering with Sports Tracker.\n\n
         This verify your email address please click on the following link, or paste this into your browser:\n\n
         http://${req.headers.host}/account/verify/${token}\n\n
         \n\n
@@ -366,7 +367,7 @@ exports.getVerifyEmail = (req, res, next) => {
         if (err.message === 'self signed certificate in certificate chain') {
           console.log('WARNING: Self signed certificate in certificate chain. Retrying with the self signed certificate. Use a valid certificate if in production.');
           transporter = nodemailer.createTransport({
-            service: 'SendGrid',
+            service: 'gmail',
             auth: {
               user: process.env.SENDGRID_USER,
               pass: process.env.SENDGRID_PASSWORD
@@ -399,7 +400,7 @@ exports.getVerifyEmail = (req, res, next) => {
  */
 exports.postReset = (req, res, next) => {
   const validationErrors = [];
-  if (!validator.isLength(req.body.password, { min: 8 })) validationErrors.push({ msg: 'Password must be at least 8 characters long' });
+  if (!validator.isLength(req.body.password, { min: 4 })) validationErrors.push({ msg: 'Password must be at least 4 characters long' });
   if (req.body.password !== req.body.confirm) validationErrors.push({ msg: 'Passwords do not match' });
   if (!validator.isHexadecimal(req.params.token)) validationErrors.push({ msg: 'Invalid Token.  Please retry.' });
 
@@ -431,7 +432,7 @@ exports.postReset = (req, res, next) => {
   const sendResetPasswordEmail = (user) => {
     if (!user) { return; }
     let transporter = nodemailer.createTransport({
-      service: 'SendGrid',
+      service: 'gmail',
       auth: {
         user: process.env.SENDGRID_USER,
         pass: process.env.SENDGRID_PASSWORD
@@ -439,8 +440,8 @@ exports.postReset = (req, res, next) => {
     });
     const mailOptions = {
       to: user.email,
-      from: 'hackathon@starter.com',
-      subject: 'Your Hackathon Starter password has been changed',
+      from: process.env.SENDGRID_USER,
+      subject: 'Your Sports Tracker password has been changed',
       text: `Hello,\n\nThis is a confirmation that the password for your account ${user.email} has just been changed.\n`
     };
     return transporter.sendMail(mailOptions)
@@ -451,7 +452,7 @@ exports.postReset = (req, res, next) => {
         if (err.message === 'self signed certificate in certificate chain') {
           console.log('WARNING: Self signed certificate in certificate chain. Retrying with the self signed certificate. Use a valid certificate if in production.');
           transporter = nodemailer.createTransport({
-            service: 'SendGrid',
+            service: 'gmail',
             auth: {
               user: process.env.SENDGRID_USER,
               pass: process.env.SENDGRID_PASSWORD
@@ -486,7 +487,8 @@ exports.getForgot = (req, res) => {
     return res.redirect('/');
   }
   res.render('account/forgot', {
-    title: 'Forgot Password'
+    title: 'Forgot Password',
+    layout: 'blank'
   });
 };
 
@@ -525,16 +527,17 @@ exports.postForgot = (req, res, next) => {
     if (!user) { return; }
     const token = user.passwordResetToken;
     let transporter = nodemailer.createTransport({
-      service: 'SendGrid',
+      service: 'gmail',
       auth: {
         user: process.env.SENDGRID_USER,
         pass: process.env.SENDGRID_PASSWORD
       }
     });
+    console.log(user.email);
     const mailOptions = {
       to: user.email,
-      from: 'hackathon@starter.com',
-      subject: 'Reset your password on Hackathon Starter',
+      from: process.env.SENDGRID_USER,
+      subject: 'Reset your password on Sports Tracker',
       text: `You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n
         Please click on the following link, or paste this into your browser to complete the process:\n\n
         http://${req.headers.host}/reset/${token}\n\n
@@ -548,7 +551,7 @@ exports.postForgot = (req, res, next) => {
         if (err.message === 'self signed certificate in certificate chain') {
           console.log('WARNING: Self signed certificate in certificate chain. Retrying with the self signed certificate. Use a valid certificate if in production.');
           transporter = nodemailer.createTransport({
-            service: 'SendGrid',
+            service: 'gmail',
             auth: {
               user: process.env.SENDGRID_USER,
               pass: process.env.SENDGRID_PASSWORD
