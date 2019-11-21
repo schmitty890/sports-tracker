@@ -1,3 +1,4 @@
+<!-- Account Profile Section -->
 <div class="row">
   <!-- Content Column -->
   <div class="col-lg-6 mb-4">
@@ -8,10 +9,91 @@
         </h6>
       </div>
       <div class="card-body">
-        <div class="row">
-          <div>a profile section can go here displaying some info about the users account</div>
-        </div>
+        <form action="/account/profile" method="POST">
+          <input type="hidden" name="_csrf">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label font-weight-bold text-right" for="firstName">First Name</label>
+            <div class="col-md-7">
+              <input class="form-control" type="text" name="firstName" id="firstName"
+                value="{{hbsObject.user.firstName}}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label font-weight-bold text-right" for="lastName">Last Name</label>
+            <div class="col-md-7">
+              <input class="form-control" type="text" name="lastName" id="lastName" value="{{hbsObject.user.lastName}}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label font-weight-bold text-right" for="email">Email</label>
+            <div class="col-md-7">
+              <input class="form-control" type="email" name="email" id="email" value="{{hbsObject.user.email}}">
+            </div>
+          </div>
+
+          {{!-- commenting out avatar for time being, may implement later --}}
+          {{!--         <div class="form-group row">
+                <label class="col-md-3 col-form-label font-weight-bold text-right">Gravatar</label>
+                <div class="col-sm-4"><img class="profile" src="https://gravatar.com/avatar/405fa83edf86f248782789f09898bfaf?s=200&amp;d=retro" width="100" height="100"></div>
+            </div> --}}
+          <div class="form-group">
+            <div class="offset-sm-3 col-md-7 pl-2">
+              <button class="btn btn btn-primary" type="submit"><i class="fas fa-pencil-alt fa-sm"></i>Update
+                Profile</button>
+            </div>
+          </div>
+        </form>
       </div>
+
+      <form action="/account/password" method="POST">
+        <input type="hidden" name="_csrf" value="oQaZYDXOZPySoyQLhjGNYQ7OkeOxeE1eUKz80=">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label font-weight-bold text-right" for="password">New Password</label>
+          <div class="col-md-7">
+            <input class="form-control" type="password" name="password" id="password">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label font-weight-bold text-right" for="confirmPassword">Confirm
+            Password</label>
+          <div class="col-md-7">
+            <input class="form-control" type="password" name="confirmPassword" id="confirmPassword">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="offset-sm-3 col-md-7 pl-2">
+            <button class="btn btn-primary" type="submit"><i class="fas fa-lock fa-sm"></i>Change Password</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
+<!-- End Account Profile Section -->
+
+<!-- Delete Account Section -->
+<div class="row">
+  <!-- Content Column -->
+  <div class="col-lg-6 mb-4">
+    <!-- Project Card Example -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Delete your account</h6>
+      </div>
+      <div class="card-body">
+        <form action="/account/delete" method="POST"
+          onsubmit="return confirm('Are you sure you want to delete your account?');">
+          <div class="form-group">
+            <p class="offset-sm-3 col-md-7 pl-2">You can delete your account, but keep in mind this action is
+              irreversible.</p>
+            <input type="hidden" name="_csrf" value="oQaZYDXOZPySoyQLhjGNYQ7OkeOxeE1eUKz80=">
+            <div class="offset-sm-3 col-md-7 pl-2">
+              <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt fa-sm"></i>Delete my
+                account</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- End Delete Account Section -->
