@@ -32,3 +32,33 @@ exports.getSubscribedTeams = (req, res, next) => {
       res.json(err);
     });
 };
+
+/**
+ * GET /
+ * Dashboard page.
+ */
+exports.index = async (req, res) => {
+  if (!req.user) {
+    return res.redirect('/login');
+  }
+  User
+    .findOne({ _id: req.user._id })
+    .populate({
+      path: 'subscribed',
+      model: 'Subscribe'
+    })
+    .exec((err, subscriptions) => {
+      if (err) {
+        console.log(err);
+      } else {
+        const hbsObject = {
+          user: subscriptions
+        };
+        console.log(hbsObject);
+        res.render('index', {
+          title: 'Home',
+          hbsObject
+        });
+      }
+    });
+};
