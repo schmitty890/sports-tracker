@@ -29,6 +29,7 @@ dotenv.config({ path: '.env.example' });
  */
 const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
+const subscribeController = require('./controllers/subscribe');
 // const apiController = require('./controllers/api');
 // const contactController = require('./controllers/contact');
 
@@ -143,6 +144,12 @@ app.post('/account/profile', passportConfig.isAuthenticated, userController.post
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
+
+/**
+ * Subscribe to teams routes.
+ */
+app.post('/subscribeToTeam/:id', passportConfig.isAuthenticated, subscribeController.postSubscribeToTeam);
+app.get('/subscribedTeams/:id', passportConfig.isAuthenticated, subscribeController.getSubscribedTeams);
 
 /**
  * API examples routes.
