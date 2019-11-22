@@ -1,0 +1,14 @@
+<div class="col-lg-6">
+  {{#each hbsObject.user.subscribed}}
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">{{this.body.team}}</h6>
+      </div>
+      <div class="card-body">
+        <div>Subscribed to email: {{this.body.email}}</div>
+        <div>Subscribed to text: {{this.body.text}}</div>
+        <div>Subscribed: {{this.body.date}}</div>
+      </div>
+    </div>
+  {{/each}}
+</div>
