@@ -17,7 +17,7 @@
       <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   </head>
-  <body id="page-top">
+  <body id="page-top" data-dbid="{{hbsObject.user._id}}">
 <!-- Page Wrapper -->
 <div id="wrapper">
   {{> sidebar}}
@@ -55,5 +55,7 @@
     <script src="/js/navigation-bar.js"></script>
     <!-- main custom js -->
     <script src="/js/main.js"></script>
+    <!-- subscribe custom js -->
+    <script src="/js/subscribe.js"></script>
   </body>
 </html>
