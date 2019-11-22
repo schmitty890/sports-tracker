@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
   emailVerificationToken: String,
   emailVerified: Boolean,
   // link to comment model/table by using the ref and saving an obj id with it. it's an array of objects so that we can have many comments
-  nhl: [{
+  subscribed: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Subscribe'
   }]

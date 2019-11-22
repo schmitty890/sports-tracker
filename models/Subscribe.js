@@ -8,8 +8,30 @@ const SubscribeSchema = new mongoose.Schema({
       type: String,
       validate: [
         (input) => input.length >= 1,
-        'Subscribe should not be blank.'
+        'team should not be blank.'
       ]
+    },
+    teamID: {
+      type: String,
+      validate: [
+        (input) => input.length >= 1,
+        'teamID should not be blank.'
+      ]
+    },
+    sport: {
+      type: String,
+      validate: [
+        (input) => input.length >= 1,
+        'sport should not be blank.'
+      ]
+    },
+    text: {
+      type: Boolean,
+      default: false
+    },
+    email: {
+      type: Boolean,
+      default: false
     },
     date: Number
   }

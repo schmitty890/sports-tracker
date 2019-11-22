@@ -7,7 +7,7 @@ const Subscribe = require('../models/Subscribe');
  */
 exports.postSubscribeToTeam = (req, res, next) => {
   Subscribe.create(req.body)
-    .then((dbSubscribe) => User.findOneAndUpdate({ _id: req.params.id }, { $push: { nhl: dbSubscribe._id } }, { new: true }))
+    .then((dbSubscribe) => User.findOneAndUpdate({ _id: req.params.id }, { $push: { subscribed: dbSubscribe._id } }, { new: true }))
     .then((dbUser) => {
       res.json(dbUser);
     })
@@ -24,9 +24,9 @@ exports.getSubscribedTeams = (req, res, next) => {
   console.log('getSubscribedTeams');
   console.log(req.body);
   User.findOne({ _id: req.params.id })
-    .populate('nhl')
-    .then((dbArticle) => {
-      res.json(dbArticle);
+    .populate('subscribed')
+    .then((dbUser) => {
+      res.json(dbUser);
     })
     .catch((err) => {
       res.json(err);
