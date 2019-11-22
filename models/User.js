@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
   // link to comment model/table by using the ref and saving an obj id with it. it's an array of objects so that we can have many comments
   nhl: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Subscribe"
+    ref: 'Subscribe'
   }]
 }, { timestamps: true });
 

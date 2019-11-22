@@ -148,7 +148,7 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 /**
  * Subscribe to teams routes.
  */
-app.post("/subscribeToTeam/:id", passportConfig.isAuthenticated, subscribeController.postSubscribeToTeam);
+app.post('/subscribeToTeam/:id', passportConfig.isAuthenticated, subscribeController.postSubscribeToTeam);
 app.get('/subscribedTeams/:id', passportConfig.isAuthenticated, subscribeController.getSubscribedTeams);
 
 /**

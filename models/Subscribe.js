@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 // Using the Schema constructor, create a new SubscribeSchema object
 const SubscribeSchema = new mongoose.Schema({
@@ -7,10 +7,8 @@ const SubscribeSchema = new mongoose.Schema({
     team: {
       type: String,
       validate: [
-        function(input) {
-          return input.length >= 1;
-        },
-        "Subscribe should not be blank."
+        (input) => input.length >= 1,
+        'Subscribe should not be blank.'
       ]
     },
     date: Number
@@ -18,7 +16,7 @@ const SubscribeSchema = new mongoose.Schema({
 });
 
 // This creates our model from the above schema, using mongoose's model method
-const Subscribe = mongoose.model("Subscribe", SubscribeSchema);
+const Subscribe = mongoose.model('Subscribe', SubscribeSchema);
 
 // Export the Subscribe model
 module.exports = Subscribe;
