@@ -20,6 +20,11 @@ const sass = require('node-sass-middleware');
 const exphbs = require('express-handlebars');
 
 /**
+ * handlebar helpers
+ */
+const timeAndDateHBSHelpers = require('./views/helpers/timeAndDates');
+
+/**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
 dotenv.config({ path: '.env.example' });
@@ -66,7 +71,10 @@ app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080);
 app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'pug');
 app.engine('handlebars', exphbs({
-  defaultLayout: 'main'
+  defaultLayout: 'main',
+  helpers: {
+    getYear: timeAndDateHBSHelpers.getYear
+  }
 }));
 app.set('view engine', 'handlebars');
 app.use(expressStatusMonitor());
