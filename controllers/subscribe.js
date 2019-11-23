@@ -76,6 +76,28 @@ exports.index = (req, res) => {
         };
 
         /**
+         * nextMatchup fetches users subscribed teams next matchup by the team id
+         */
+        const nextMatchUp = () => {
+          console.log('nextMatchUp');
+          const subscribers = hbsObject.user.subscribed;
+          const subscribersTeamIDArr = [];
+          for (let i = 0; i < subscribers.length; i++) {
+            subscribersTeamIDArr.push(nhlAPI.teamsNextMatchup(subscribers[i].body.teamID));
+          }
+          Promise.all(subscribersTeamIDArr)
+            .then((results) => {
+              // console.log(results);
+              for (let i = 0; i < results.length; i++) {
+                subscribers[i].body.nextGame = results[i];
+              }
+              renderDashboard();
+            }).catch((err) => {
+              console.log(err);
+            });
+        };
+
+        /**
          * doTeamsHaveGamesToday takes users subscribed nhl teams and fetches if they have a game today or not
          *
          */
@@ -90,12 +112,11 @@ exports.index = (req, res) => {
               for (let i = 0; i < results.length; i++) {
                 subscribers[i].body.gameToday = results[i];
               }
-              renderDashboard();
+              nextMatchUp();
             }).catch((err) => {
               console.log(err);
             });
         };
-
         doTeamsHaveGamesToday();
       }
     });

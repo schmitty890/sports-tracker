@@ -21,3 +21,13 @@ exports.gameToday = (teamID) => {
     })
     .catch(() => Promise.reject(new Error('There was an error while getting player summary')));
 };
+
+/**
+ * nextMatchup returns a teams next matchup
+ */
+exports.teamsNextMatchup = (teamID) => {
+  const url = `https://statsapi.web.nhl.com/api/v1/teams?teamId=${teamID}&expand=team.schedule.next`;
+  return axios.get(url)
+    .then(({ data }) => data)
+    .catch(() => Promise.reject(new Error('There was an error while getting player summary')));
+};
