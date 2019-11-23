@@ -29,6 +29,10 @@ const SubscribeSchema = new mongoose.Schema({
       type: Boolean,
       default: false
     },
+    gameToday: {
+      type: Boolean,
+      default: false
+    },
     email: {
       type: Boolean,
       default: false

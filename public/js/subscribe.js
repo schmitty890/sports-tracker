@@ -2,8 +2,8 @@
 $(document).on('click', '.subscribe-button', () => {
   const dbId = $('body').data('dbid');
   const team = $('#subscribe-to-team').val();
-  const sport = $('#subscribe-to-team option').data('sport');
-  const teamID = $('#subscribe-to-team option').data('team-id');
+  const sport = $('#subscribe-to-team').find(':selected').data('sport');
+  const teamID = $('#subscribe-to-team').find(':selected').data('team-id');
 
   $.ajax({
     method: 'POST',
