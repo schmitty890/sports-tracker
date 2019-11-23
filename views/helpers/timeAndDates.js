@@ -4,4 +4,7 @@ const moment = require('moment');
  */
 exports.getYear = () => new Date().getFullYear();
 
+/**
+ * momentFromTimeNow returns time from now - past or future
+ */
 exports.momentFromTimeNow = (time) =>  moment(time).fromNow();
