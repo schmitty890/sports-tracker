@@ -81,16 +81,19 @@ exports.index = (req, res) => {
          */
         const doTeamsHaveGamesToday = async () => {
           const subscribers = hbsObject.user.subscribed;
-
-          // TODO: we can remove this await outside of the for loop but it works for the purpose of updating the ture/false if a team is playing a game, eslint is throwing error and we should fix LINK: https://eslint.org/docs/rules/no-await-in-loop
-          /* eslint-disable */
+          const subscribersTeamIDArr = [];
           for (let i = 0; i < subscribers.length; i++) {
-            const gameToday = await nhlAPI.gameToday(subscribers[i].body.teamID);
-            subscribers[i].body.gameToday = gameToday;
+            subscribersTeamIDArr.push(nhlAPI.gameToday(subscribers[i].body.teamID));
           }
-          /* eslint-enable */
-
-          renderDashboard();
+          Promise.all(subscribersTeamIDArr)
+            .then((results) => {
+              for (let i = 0; i < results.length; i++) {
+                subscribers[i].body.gameToday = results[i];
+              }
+              renderDashboard();
+            }).catch((err) => {
+              console.log(err);
+            });
         };
 
         doTeamsHaveGamesToday();
