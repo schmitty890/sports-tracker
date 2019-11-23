@@ -1,0 +1,53 @@
+.card--game {
+
+}
+
+.card--header {
+
+}
+
+.card--title {
+
+}
+
+.card--header__row {
+  padding-bottom: 20px;
+}
+
+.card--header__title {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.card--header__time {
+  font-size: 12px;
+}
+
+.card--teamname {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.card--record {
+
+}
+
+.card--venue {
+
+}
+
+.card--game-status {
+
+}
+
+.card--game-status--scheduled {
+  color: green;
+}
+
+.card-subscribe-container {
+  margin-top: 20px;
+}
+
+.card--subscribe__button {
+  margin-top: 20px;
+}

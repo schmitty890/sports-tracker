@@ -1,0 +1,92 @@
+<div class="col-lg-6">
+  {{#each hbsObject.user.subscribed}}
+    <div class="card shadow mb-4 card--game">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary card--title">{{this.body.team}}</h6>
+      </div>
+      <div class="card-body">
+        {{#if this.body.currentDaysGame.totalGames}}
+          {{#each this.body.currentDaysGame.dates}}
+            <div>{{this.date}}</div>
+            {{#each this.games}}
+              <div class="container ">
+                <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+                <div class="row card--header__row">
+                  <div class="col-12 col-md-8 card--header__title">{{this.teams.away.team.name}} at {{this.teams.home.team.name}}</div>
+                  <div class="col-12 col-md-4 card--header__time">
+                    Gametime in {{momentFromTimeNow this.gameDate}}
+                    <div class="card--game-status">Status: {{this.status.detailedState}}</div>
+                  </div>
+                </div>
+
+                <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+                <div class="row">
+                  <div class="col-6 col-md-4">
+                    <div class="card--teamname">{{this.teams.away.team.name}}</div>
+                    <div class="card--record">Record: {{this.teams.away.leagueRecord.wins}} - {{this.teams.away.leagueRecord.losses}} - {{this.teams.away.leagueRecord.ot}}</div>
+                  </div>
+                  <div class="col-6 col-md-4">
+                    <div class="card--teamname">{{this.teams.home.team.name}}</div>
+                    <div class="card--record">Record: {{this.teams.home.leagueRecord.wins}} - {{this.teams.home.leagueRecord.losses}} - {{this.teams.home.leagueRecord.ot}}</div>
+                  </div>
+                  {{!-- <div class="col-6 col-md-4">
+                    <div class="card--venue">Venue: {{this.venue.name}}</div>
+                  </div> --}}
+                </div>
+
+                <!-- Columns are always 50% wide, on mobile and desktop -->
+                <div class="row">
+                  <div class="col-6">
+                    <div></div>
+                  </div>
+                  <div class="col-6">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="container card-subscribe-container">
+                <div>Features coming soon!</div>
+                <div class="row card-subscribe-row">
+                  <div class="col-sm">
+                    <button class="btn btn btn-primary card--subscribe__button" disabled>Subscribe to SMS</button>
+                  </div>
+                  <div class="col-sm">
+                    <button class="btn btn btn-primary card--subscribe__button" disabled>Subscribe to email</button>
+                  </div>
+                  <div class="col-sm">
+                    <button class="btn btn btn-primary card--subscribe__button" disabled>Unsubscribe</button>
+                  </div>
+                </div>
+              </div>
+                              
+            {{/each}}
+          {{/each}}
+          {{else}}
+          <div>no game, show next game</div>
+          {{#each this.body.nextGame.teams}}
+            <div>{{this.name}}</div>
+            <div>{{this.venue.city}}</div>
+            <div>{{this.venue.name}}</div>
+            {{#each this.nextGameSchedule.dates}}
+              <div>{{daysUntil this.date}}</div>
+              {{#each this.games}}
+                <div>{{momentFromTimeNow this.gameDate}}</div>
+                <div>{{this.teams.away.team.name}}</div>
+                <div>{{this.teams.away.leagueRecord.wins}}</div>
+                <div>{{this.teams.away.leagueRecord.losses}}</div>
+                <div>{{this.teams.away.leagueRecord.ot}}</div>
+                <div>{{this.teams.home.team.name}}</div>
+                <div>{{this.teams.home.leagueRecord.wins}}</div>
+                <div>{{this.teams.home.leagueRecord.losses}}</div>
+                <div>{{this.teams.home.leagueRecord.ot}}</div>
+              {{/each}}
+            {{/each}}
+          {{/each}}
+        {{/if}}
+      </div>
+    </div>
+  {{/each}}
+</div>
