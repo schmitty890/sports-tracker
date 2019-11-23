@@ -5,7 +5,7 @@ const axios = require('axios');
  * Determine if a team is playing today
  * returns true or false
  */
-exports.gameToday = async (teamID) => {
+exports.gameToday = (teamID) => {
   const url = `https://statsapi.web.nhl.com/api/v1/schedule?teamId=${teamID}`;
   return axios.get(url)
     .then(({ data }) => {

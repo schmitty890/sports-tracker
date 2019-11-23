@@ -79,7 +79,7 @@ exports.index = (req, res) => {
          * doTeamsHaveGamesToday takes users subscribed nhl teams and fetches if they have a game today or not
          *
          */
-        const doTeamsHaveGamesToday = async () => {
+        const doTeamsHaveGamesToday = () => {
           const subscribers = hbsObject.user.subscribed;
           const subscribersTeamIDArr = [];
           for (let i = 0; i < subscribers.length; i++) {
