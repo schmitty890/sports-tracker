@@ -29,9 +29,7 @@ const SubscribeSchema = new mongoose.Schema({
       type: Boolean,
       default: false
     },
-    gameToday: {
-      type: Boolean
-    },
+    currentDaysGame: mongoose.Schema.Types.Mixed,
     nextGame: mongoose.Schema.Types.Mixed,
     email: {
       type: Boolean,
