@@ -74,7 +74,8 @@ app.engine('handlebars', exphbs({
   defaultLayout: 'main',
   helpers: {
     getYear: timeAndDateHBSHelpers.getYear,
-    momentFromTimeNow: timeAndDateHBSHelpers.momentFromTimeNow
+    momentFromTimeNow: timeAndDateHBSHelpers.momentFromTimeNow,
+    daysUntil: timeAndDateHBSHelpers.daysUntil
   }
 }));
 app.set('view engine', 'handlebars');
