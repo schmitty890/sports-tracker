@@ -77,20 +77,27 @@ exports.index = (req, res) => {
         };
 
         const getCurrentLiveGameStats = (currentLiveStatsURLs) => {
-          console.log(currentLiveStatsURLs);
+          // console.log(currentLiveStatsURLs);
           const subscribers = hbsObject.user.subscribed;
           const subscribersTeamIDArr = [];
           for (let i = 0; i < currentLiveStatsURLs.length; i++) {
-            subscribersTeamIDArr.push(nhlAPI.getCurrentStatsOfLiveGame(currentLiveStatsURLs[i]));
+            const currentURLforLiveStats = currentLiveStatsURLs[i];
+            if (currentURLforLiveStats.length !== 0) {
+              subscribersTeamIDArr.push(nhlAPI.getCurrentStatsOfLiveGame(currentURLforLiveStats));
+            } else {
+              subscribersTeamIDArr.push('');
+            }
           }
           Promise.all(subscribersTeamIDArr)
             .then((results) => {
-              // console.log(results);\
+              // console.log(results);
               for (let i = 0; i < results.length; i++) {
-                console.log(subscribers[i].body.currentDaysGame.dates.length);
+                const currentSubscribedTeam = subscribers[i];
+                const liveStatsGameResult = results[i];
+                // console.log(currentSubscribedTeam.body.currentDaysGame.dates.length);
                 // console.log(subscribers[i].body.currentDaysGame);
-                if (subscribers[i].body.currentDaysGame.dates.length !== 0) {
-                  subscribers[i].body.currentDaysGame.dates[0].games[0].liveStats = results[i];
+                if (currentSubscribedTeam.body.currentDaysGame.dates.length !== 0) {
+                  currentSubscribedTeam.body.currentDaysGame.dates[0].games[0].liveStats = liveStatsGameResult;
                 }
               }
             }).then(() => {
@@ -116,8 +123,6 @@ exports.index = (req, res) => {
               for (let i = 0; i < results.length; i++) {
                 subscribers[i].body.nextGame = results[i];
               }
-              // getCurrentLiveGameStats(subscribersTeamIDArr);
-              // renderDashboard();
             }).catch((err) => {
               console.log(err);
             });
@@ -137,13 +142,16 @@ exports.index = (req, res) => {
           Promise.all(subscribersTeamIDArr)
             .then((results) => {
               for (let i = 0; i < results.length; i++) {
-                console.log(results[i].dates.length);
+                const currentResult = results[i];
+                const currentSubscribedTeam = subscribers[i];
                 // if current playing game array is not empty push live feed to get live data feed
-                if (results[i].dates.length !== 0) {
-                  getLiveDataFeeds.push(results[i].dates[0].games[0].link);
+                if (currentResult.dates.length !== 0) {
+                  const liveFeedURL = currentResult.dates[0].games[0].link;
+                  getLiveDataFeeds.push(liveFeedURL);
+                } else {
+                  getLiveDataFeeds.push('');
                 }
-
-                subscribers[i].body.currentDaysGame = results[i];
+                currentSubscribedTeam.body.currentDaysGame = currentResult;
               }
               getCurrentLiveGameStats(getLiveDataFeeds);
               getNextMatchUp();
