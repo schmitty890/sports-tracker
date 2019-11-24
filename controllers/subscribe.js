@@ -70,9 +70,35 @@ exports.index = (req, res) => {
          * render the dashboard page
          */
         const renderDashboard = () => {
+          // console.log(hbsObject.user.subscribed);
           res.render('index', {
             hbsObject
           });
+        };
+
+        const getCurrentLiveGameStats = (currentLiveStatsURLs) => {
+          console.log(currentLiveStatsURLs);
+          const subscribers = hbsObject.user.subscribed;
+          const subscribersTeamIDArr = [];
+          for (let i = 0; i < currentLiveStatsURLs.length; i++) {
+            subscribersTeamIDArr.push(nhlAPI.getCurrentStatsOfLiveGame(currentLiveStatsURLs[i]));
+          }
+          Promise.all(subscribersTeamIDArr)
+            .then((results) => {
+              // console.log(results);\
+              for (let i = 0; i < results.length; i++) {
+                console.log(subscribers[i].body.currentDaysGame.dates.length);
+                // console.log(subscribers[i].body.currentDaysGame);
+                if (subscribers[i].body.currentDaysGame.dates.length !== 0) {
+                  subscribers[i].body.currentDaysGame.dates[0].games[0].liveStats = results[i];
+                }
+              }
+            }).then(() => {
+              renderDashboard();
+            }).catch((err) => {
+              console.log(err);
+            });
+          // renderDashboard();
         };
 
         /**
@@ -90,7 +116,8 @@ exports.index = (req, res) => {
               for (let i = 0; i < results.length; i++) {
                 subscribers[i].body.nextGame = results[i];
               }
-              renderDashboard();
+              // getCurrentLiveGameStats(subscribersTeamIDArr);
+              // renderDashboard();
             }).catch((err) => {
               console.log(err);
             });
@@ -103,14 +130,22 @@ exports.index = (req, res) => {
         const getTodaysGame = () => {
           const subscribers = hbsObject.user.subscribed;
           const subscribersTeamIDArr = [];
+          const getLiveDataFeeds = [];
           for (let i = 0; i < subscribers.length; i++) {
             subscribersTeamIDArr.push(nhlAPI.getTeamsCurrentGame(subscribers[i].body.teamID));
           }
           Promise.all(subscribersTeamIDArr)
             .then((results) => {
               for (let i = 0; i < results.length; i++) {
+                console.log(results[i].dates.length);
+                // if current playing game array is not empty push live feed to get live data feed
+                if (results[i].dates.length !== 0) {
+                  getLiveDataFeeds.push(results[i].dates[0].games[0].link);
+                }
+
                 subscribers[i].body.currentDaysGame = results[i];
               }
+              getCurrentLiveGameStats(getLiveDataFeeds);
               getNextMatchUp();
             }).catch((err) => {
               console.log(err);
