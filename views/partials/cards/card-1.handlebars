@@ -10,79 +10,77 @@
             <div>{{this.date}}</div>
             {{#each this.games}}
               <div class="container ">
-                <!-- Stack the columns on mobile by making one full-width and the other half-width -->
-                <div class="row card--header__row">
-                  <div class="col-12 col-md-8 card--header__title">{{this.teams.away.team.name}} at {{this.teams.home.team.name}}</div>
-                  <div class="col-12 col-md-4 card--header__time">
-                    Gametime in {{momentFromTimeNow this.gameDate}}
-                    <div class="card--game-status">Status: {{this.status.detailedState}}</div>
+                <section class="card--section card--section__header">
+                  <div class="row card--header__row">
+                    <div class="col-12 col-md-8 card--header__title">{{this.teams.away.team.name}} at {{this.teams.home.team.name}}</div>
+                    <div class="col-12 col-md-4 card--header__time">
+                      Gametime in {{momentFromTimeNow this.gameDate}}
+                      <div class="card--game-status">Status: {{this.status.detailedState}}</div>
+                    </div>
                   </div>
-                </div>
-
-                <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-                <div class="row">
-                  <div class="col-6 col-md-4">
-                    <div class="card--teamname">{{this.teams.away.team.name}}</div>
-                    <div class="card--record">Record: {{this.teams.away.leagueRecord.wins}} - {{this.teams.away.leagueRecord.losses}} - {{this.teams.away.leagueRecord.ot}}</div>
+                </section>
+                <hr>
+                <section class="card--section card--section__info">
+                  <div class="row card--row__centered">
+                    <div class="col">
+                      <div class="card--teamname">{{this.teams.away.team.name}}</div>
+                      <div class="card--record">{{this.teams.away.leagueRecord.wins}} - {{this.teams.away.leagueRecord.losses}} - {{this.teams.away.leagueRecord.ot}}</div>
+                    </div>
+                    <div class="col-6 hide-tablet">
+                      <div class="card--venue">Venue: {{this.venue.name}}</div>
+                    </div>
+                    <div class="col">
+                      <div class="card--teamname">{{this.teams.home.team.name}}</div>
+                      <div class="card--record">{{this.teams.home.leagueRecord.wins}} - {{this.teams.home.leagueRecord.losses}} - {{this.teams.home.leagueRecord.ot}}</div>
+                    </div>
                   </div>
-                  <div class="col-6 col-md-4">
-                    <div class="card--teamname">{{this.liveStats.liveData.linescore.currentPeriodOrdinal}} {{this.liveStats.liveData.linescore.currentPeriodTimeRemaining}}</div>
-                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.team.abbreviation}} - {{this.liveStats.liveData.boxscore.teams.home.team.abbreviation}}</div>
-                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.goals}} - {{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.goals}}</div>
-                    <div>shots</div>
-                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.shots}} - {{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.shots}}</div>
-                    <div>powerplay %</div>
-                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayPercentage}}% - {{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayPercentage}}%</div>
-                    <div>powerplay goals</div>
-                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayGoals}} - {{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayGoals}}</div>
-                    <div>powerplay opportunities</div>
-                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayOpportunities}} - {{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayOpportunities}}</div>
-                    <div>faceoff win percentage</div>
-                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}}% - {{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}}%</div>
-                    <div>blocked shots</div>
-                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.blocked}} - {{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.blocked}}</div>
-                    <div>takeaways</div>
-                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.takeaways}} - {{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.takeaways}}</div>
-                    <div>giveaways</div>
-                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.giveaways}} - {{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.giveaways}}</div>
-                    <div>hits</div>
-                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.hits}} - {{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.hits}}</div>
-                    
+                </section>
+                <hr>
+                <section class="card--section card--section__stats">
+                  <div class="row card--row__centered">
+                    <div class="col-4">
+                      <div class="game-stats--title game-stats--bold">{{this.liveStats.liveData.boxscore.teams.away.team.abbreviation}}</div>
+                      <div class="">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.goals}}</div>
+                      <div class="">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.shots}}</div>
+                      <div class="">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayPercentage}}%</div>
+                      <div class="">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayGoals}}</div>
+                      <div class="">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}}%</div>
+                      <div class="hide-mobile">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.blocked}}</div>
+                      <div class="hide-mobile">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.takeaways}}</div>
+                      <div class="hide-mobile">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.giveaways}}</div>
+                      <div class="">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.hits}}</div>
+                    </div>
+                    <div class="col-4">
+                      <div class="">&nbsp;</div>
+                      <div class="game-stats--bold">score</div>
+                      <div class="game-stats--bold">shots</div>
+                      <div class="game-stats--bold">pp %</div>
+                      <div class="game-stats--bold">ppg</div>
+                      <div class="game-stats--bold">fow%</div>
+                      <div class="game-stats--bold hide-mobile">blocked shots</div>
+                      <div class="game-stats--bold hide-mobile">takeaways</div>
+                      <div class="game-stats--bold hide-mobile">giveaways</div>
+                      <div class="game-stats--bold">hits</div>
 
-                    
-
-
-                    
-
-                    
-
-                    
-                    
-
-                    {{!-- <div class="card--teamname">{{this.liveStats.liveData.linescore.currentPeriodOrdinal}} {{this.liveStats.liveData.linescore.currentPeriodTimeRemaining}}</div> --}}
+                    </div>
+                    <div class="col-4">
+                      <div class="game-stats--title game-stats--bold">{{this.liveStats.liveData.boxscore.teams.home.team.abbreviation}}</div>
+                      <div class="">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.goals}}</div>
+                      <div class="">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.shots}}</div>
+                      <div class="">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayPercentage}}%</div>
+                      <div class="">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayGoals}}</div>
+                      <div class="">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}}%</div>
+                      <div class="hide-mobile">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.blocked}}</div>
+                      <div class="hide-mobile">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.takeaways}}</div>
+                      <div class="hide-mobile">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.giveaways}}</div>
+                      <div class="">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.hits}}</div>
+                    </div>
                   </div>
-                  
-                  <div class="col-6 col-md-4">
-                    <div class="card--teamname">{{this.teams.home.team.name}}</div>
-                    <div class="card--record">Record: {{this.teams.home.leagueRecord.wins}} - {{this.teams.home.leagueRecord.losses}} - {{this.teams.home.leagueRecord.ot}}</div>
-                  </div>
-                  {{!-- <div class="col-6 col-md-4">
-                    <div class="card--venue">Venue: {{this.venue.name}}</div>
-                  </div> --}}
-                </div>
-
-                <!-- Columns are always 50% wide, on mobile and desktop -->
-                <div class="row">
-                  <div class="col-6">
-                    <div></div>
-                  </div>
-                  <div class="col-6">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
-                </div>
+                </section>
               </div>
+
+
+
 
               {{!-- <div class="container card-subscribe-container">
                 <div>Features coming soon!</div>
