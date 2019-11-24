@@ -25,7 +25,6 @@ exports.getTeamsNextMatchup = (teamID) => {
  * getCurrentStatsOfLiveGame returns live stats of a game in action
  */
 exports.getCurrentStatsOfLiveGame = (teamLiveURL) => {
-  console.log('getCurrentStatsOfLiveGame');
   const url = `https://statsapi.web.nhl.com${teamLiveURL}`;
   return axios.get(url)
     .then(({ data }) => data)
