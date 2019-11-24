@@ -26,6 +26,43 @@
                     <div class="card--record">Record: {{this.teams.away.leagueRecord.wins}} - {{this.teams.away.leagueRecord.losses}} - {{this.teams.away.leagueRecord.ot}}</div>
                   </div>
                   <div class="col-6 col-md-4">
+                    <div class="card--teamname">{{this.liveStats.liveData.linescore.currentPeriodOrdinal}} {{this.liveStats.liveData.linescore.currentPeriodTimeRemaining}}</div>
+                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.team.abbreviation}} - {{this.liveStats.liveData.boxscore.teams.home.team.abbreviation}}</div>
+                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.goals}} - {{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.goals}}</div>
+                    <div>shots</div>
+                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.shots}} - {{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.shots}}</div>
+                    <div>powerplay %</div>
+                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayPercentage}}% - {{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayPercentage}}%</div>
+                    <div>powerplay goals</div>
+                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayGoals}} - {{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayGoals}}</div>
+                    <div>powerplay opportunities</div>
+                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayOpportunities}} - {{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayOpportunities}}</div>
+                    <div>faceoff win percentage</div>
+                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}}% - {{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}}%</div>
+                    <div>blocked shots</div>
+                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.blocked}} - {{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.blocked}}</div>
+                    <div>takeaways</div>
+                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.takeaways}} - {{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.takeaways}}</div>
+                    <div>giveaways</div>
+                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.giveaways}} - {{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.giveaways}}</div>
+                    <div>hits</div>
+                    <div class="card--teamname">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.hits}} - {{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.hits}}</div>
+                    
+
+                    
+
+
+                    
+
+                    
+
+                    
+                    
+
+                    {{!-- <div class="card--teamname">{{this.liveStats.liveData.linescore.currentPeriodOrdinal}} {{this.liveStats.liveData.linescore.currentPeriodTimeRemaining}}</div> --}}
+                  </div>
+                  
+                  <div class="col-6 col-md-4">
                     <div class="card--teamname">{{this.teams.home.team.name}}</div>
                     <div class="card--record">Record: {{this.teams.home.leagueRecord.wins}} - {{this.teams.home.leagueRecord.losses}} - {{this.teams.home.leagueRecord.ot}}</div>
                   </div>
@@ -47,7 +84,7 @@
                 </div>
               </div>
 
-              <div class="container card-subscribe-container">
+              {{!-- <div class="container card-subscribe-container">
                 <div>Features coming soon!</div>
                 <div class="row card-subscribe-row">
                   <div class="col-sm">
@@ -60,7 +97,7 @@
                     <button class="btn btn btn-primary card--subscribe__button" disabled>Unsubscribe</button>
                   </div>
                 </div>
-              </div>
+              </div> --}}
                               
             {{/each}}
           {{/each}}

@@ -31,6 +31,7 @@ const SubscribeSchema = new mongoose.Schema({
     },
     currentDaysGame: mongoose.Schema.Types.Mixed,
     nextGame: mongoose.Schema.Types.Mixed,
+    liveStats: mongoose.Schema.Types.Mixed,
     email: {
       type: Boolean,
       default: false
