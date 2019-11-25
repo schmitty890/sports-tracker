@@ -7,7 +7,6 @@ exports.addStatusClass = (status) => {
     case 'Scheduled':
       return 'card--game-status__scheduled';
     case 'Pre-Game':
-      console.log('preee gammeee');
       return 'card--game-status__pregame';
     case 'Final':
       return 'card--game-status__final';
