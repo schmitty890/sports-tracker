@@ -10,108 +10,23 @@
             <div>{{this.date}}</div>
             {{#each this.games}}
               <div class="container ">
-                <section class="card--section card--section__header">
-                  <div class="row card--header__row">
-                    <div class="col-12 col-md-8 card--header__title">{{this.teams.away.team.name}} at {{this.teams.home.team.name}}</div>
-                    <div class="col-12 col-md-4 card--header__time">
-                      Gametime in {{momentFromTimeNow this.gameDate}}
-                      <div class="card--game-status">Status: <span class="{{addStatusClass this.status.detailedState}}">{{this.status.detailedState}}</span></div>
-                    </div>
-                  </div>
-                </section>
+                {{> cards/partials/header-section}}
                 <hr>
-                <section class="card--section card--section__info">
-                  <div class="row card--row__centered">
-                    <div class="col">
-                      <div class="card--teamname">{{this.teams.away.team.name}}</div>
-                      <div class="card--record">{{this.teams.away.leagueRecord.wins}} - {{this.teams.away.leagueRecord.losses}} - {{this.teams.away.leagueRecord.ot}}</div>
-                    </div>
-                    <div class="col-6 hide-tablet">
-                      <div class="card--venue">Venue: {{this.venue.name}}</div>
-                    </div>
-                    <div class="col">
-                      <div class="card--teamname">{{this.teams.home.team.name}}</div>
-                      <div class="card--record">{{this.teams.home.leagueRecord.wins}} - {{this.teams.home.leagueRecord.losses}} - {{this.teams.home.leagueRecord.ot}}</div>
-                    </div>
-                  </div>
-                </section>
+                {{> cards/partials/info-section}}
                 <hr>
-                <section class="card--section card--section__stats">
-                  <div class="row card--row__centered">
-                    <div class="col-4">
-                      <div class="game-stats--title game-stats--bold">{{this.liveStats.liveData.boxscore.teams.away.team.abbreviation}}</div>
-                      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.goals this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.goals}}">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.goals}}</div>
-                      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.shots this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.shots}}">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.shots}}</div>
-                      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayPercentage this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayPercentage}}">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayPercentage}}%</div>
-                      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayGoals this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayGoals}}">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayGoals}}</div>
-                      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}}">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}}%</div>
-                      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.blocked this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.blocked}} hide-mobile">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.blocked}}</div>
-                      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.takeaways this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.takeaways}} hide-mobile">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.takeaways}}</div>
-                      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.giveaways this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.giveaways}} hide-mobile">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.giveaways}}</div>
-                      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.hits this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.hits}}">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.hits}}</div>
-                    </div>
-                    <div class="col-4">
-                      <div class="">&nbsp;</div>
-                      <div class="game-stats--bold">score</div>
-                      <div class="game-stats--bold">shots</div>
-                      <div class="game-stats--bold">pp%</div>
-                      <div class="game-stats--bold">ppg</div>
-                      <div class="game-stats--bold">fow%</div>
-                      <div class="game-stats--bold hide-mobile">blocked shots</div>
-                      <div class="game-stats--bold hide-mobile">takeaways</div>
-                      <div class="game-stats--bold hide-mobile">giveaways</div>
-                      <div class="game-stats--bold">hits</div>
-
-                    </div>
-                    <div class="col-4">
-                      <div class="game-stats--title game-stats--bold">{{this.liveStats.liveData.boxscore.teams.home.team.abbreviation}}</div>
-                      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.goals this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.goals}}">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.goals}}</div>
-                      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.shots this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.shots}}">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.shots}}</div>
-                      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayPercentage this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayPercentage}}">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayPercentage}}%</div>
-                      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayGoals this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayGoals}}">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayGoals}}</div>
-                      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}}">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}}%</div>
-                      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.blocked this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.blocked}} hide-mobile">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.blocked}}</div>
-                      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.takeaways this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.takeaways}} hide-mobile">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.takeaways}}</div>
-                      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.giveaways this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.giveaways}} hide-mobile">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.giveaways}}</div>
-                      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.hits this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.hits}}">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.hits}}</div>
-                    </div>
-                  </div>
-                </section>
+                {{> cards/partials/game-stats-section}}
               </div>
-              {{!-- <div class="container card-subscribe-container">
-                <div>Features coming soon!</div>
-                <div class="row card-subscribe-row">
-                  <div class="col-sm">
-                    <button class="btn btn btn-primary card--subscribe__button" disabled>Subscribe to SMS</button>
-                  </div>
-                  <div class="col-sm">
-                    <button class="btn btn btn-primary card--subscribe__button" disabled>Subscribe to email</button>
-                  </div>
-                  <div class="col-sm">
-                    <button class="btn btn btn-primary card--subscribe__button" disabled>Unsubscribe</button>
-                  </div>
-                </div>
-              </div> --}}       
             {{/each}}
           {{/each}}
           {{else}}
-          <div>no game today... show next game</div>
           {{#each this.body.nextGame.teams}}
-            <div>{{this.name}}</div>
-            <div>{{this.venue.city}}</div>
-            <div>{{this.venue.name}}</div>
             {{#each this.nextGameSchedule.dates}}
-              <div>{{daysUntil this.date}}</div>
               {{#each this.games}}
-                <div>{{momentFromTimeNow this.gameDate}}</div>
-                <div>{{this.teams.away.team.name}}</div>
-                <div>{{this.teams.away.leagueRecord.wins}}</div>
-                <div>{{this.teams.away.leagueRecord.losses}}</div>
-                <div>{{this.teams.away.leagueRecord.ot}}</div>
-                <div>{{this.teams.home.team.name}}</div>
-                <div>{{this.teams.home.leagueRecord.wins}}</div>
-                <div>{{this.teams.home.leagueRecord.losses}}</div>
-                <div>{{this.teams.home.leagueRecord.ot}}</div>
+              <div class="container ">
+                {{> cards/partials/header-section}}
+                <hr>
+                {{> cards/partials/info-section}}
+              </div>
               {{/each}}
             {{/each}}
           {{/each}}

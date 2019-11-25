@@ -1,0 +1,41 @@
+<section class="card--section card--section__stats">
+  <div class="row card--row__centered">
+    <div class="col-4">
+      <div class="game-stats--title game-stats--bold">{{this.liveStats.liveData.boxscore.teams.away.team.abbreviation}}</div>
+      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.goals this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.goals}}">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.goals}}</div>
+      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.shots this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.shots}}">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.shots}}</div>
+      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayPercentage this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayPercentage}}">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayPercentage}}%</div>
+      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayGoals this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayGoals}}">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayGoals}}</div>
+      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}}">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}}%</div>
+      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.blocked this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.blocked}} hide-mobile">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.blocked}}</div>
+      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.takeaways this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.takeaways}} hide-mobile">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.takeaways}}</div>
+      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.giveaways this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.giveaways}} hide-mobile">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.giveaways}}</div>
+      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.hits this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.hits}}">{{this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.hits}}</div>
+    </div>
+    <div class="col-4">
+      <div class="">&nbsp;</div>
+      <div class="game-stats--bold">score</div>
+      <div class="game-stats--bold">shots</div>
+      <div class="game-stats--bold">pp%</div>
+      <div class="game-stats--bold">ppg</div>
+      <div class="game-stats--bold">fow%</div>
+      <div class="game-stats--bold hide-mobile">blocked shots</div>
+      <div class="game-stats--bold hide-mobile">takeaways</div>
+      <div class="game-stats--bold hide-mobile">giveaways</div>
+      <div class="game-stats--bold">hits</div>
+
+    </div>
+    <div class="col-4">
+      <div class="game-stats--title game-stats--bold">{{this.liveStats.liveData.boxscore.teams.home.team.abbreviation}}</div>
+      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.goals this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.goals}}">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.goals}}</div>
+      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.shots this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.shots}}">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.shots}}</div>
+      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayPercentage this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayPercentage}}">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayPercentage}}%</div>
+      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayGoals this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayGoals}}">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayGoals}}</div>
+      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}}">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}}%</div>
+      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.blocked this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.blocked}} hide-mobile">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.blocked}}</div>
+      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.takeaways this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.takeaways}} hide-mobile">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.takeaways}}</div>
+      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.giveaways this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.giveaways}} hide-mobile">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.giveaways}}</div>
+      <div class="{{compareStats this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.hits this.liveStats.liveData.boxscore.teams.away.teamStats.teamSkaterStats.hits}}">{{this.liveStats.liveData.boxscore.teams.home.teamStats.teamSkaterStats.hits}}</div>
+    </div>
+  </div>
+</section>
