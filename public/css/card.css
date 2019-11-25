@@ -40,8 +40,12 @@
 
 }
 
-.card--game-status--scheduled {
+.card--game-status__scheduled, .card--game-status__in-progress, .card--game-status__pregame {
   color: green;
+}
+
+.card--game-status__final {
+  color: red;
 }
 
 .card-subscribe-container {
@@ -54,6 +58,16 @@
 
 .card--section {
   
+}
+
+.card--game-status__in-progress {
+  opacity: 1;
+  animation: fade 3s infinite;
+}
+
+@keyframes fade {
+  0%,100% { opacity: 0 }
+  50% { opacity: 1 }
 }
 
 /**
@@ -74,6 +88,10 @@ game stats section
 
 .game-stats--bold {
   font-weight: 700;
+}
+
+.game-stats--bold__green {
+  color: green;
 }
 
 

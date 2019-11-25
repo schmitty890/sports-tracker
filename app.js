@@ -23,6 +23,7 @@ const exphbs = require('express-handlebars');
  * handlebar helpers
  */
 const timeAndDateHBSHelpers = require('./views/helpers/timeAndDates');
+const liveGameHelpers = require('./views/helpers/liveGame');
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -75,7 +76,9 @@ app.engine('handlebars', exphbs({
   helpers: {
     getYear: timeAndDateHBSHelpers.getYear,
     momentFromTimeNow: timeAndDateHBSHelpers.momentFromTimeNow,
-    daysUntil: timeAndDateHBSHelpers.daysUntil
+    daysUntil: timeAndDateHBSHelpers.daysUntil,
+    addStatusClass: liveGameHelpers.addStatusClass,
+    compareStats: liveGameHelpers.compareStats
   }
 }));
 app.set('view engine', 'handlebars');
