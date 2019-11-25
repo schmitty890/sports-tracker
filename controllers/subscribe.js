@@ -11,10 +11,18 @@ exports.postSubscribeToTeam = (req, res, next) => {
   Subscribe.create(req.body)
     .then((dbSubscribe) => User.findOneAndUpdate({ _id: req.params.id }, { $push: { subscribed: dbSubscribe._id } }, { new: true }))
     .then((dbUser) => {
-      res.json(dbUser);
+      const returnObj = {
+        dbUser,
+        html: '<div class="subscribed-success">Subscribed!</div>'
+      };
+      res.json(returnObj);
     })
     .catch((err) => {
-      res.json(err);
+      const returnObj = {
+        err,
+        html: '<div class="subscribed-error">Error when subscribing :(</div>'
+      };
+      res.json(returnObj);
     });
 };
 
