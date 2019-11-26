@@ -12,10 +12,10 @@ sudo: false
 install:
   - npm install
 before_script:
+  - npm install -g gulp-cli
   - npm install -g gulp
 script:
   - npm run lint
   - npm test
-  - gulp
 notifications:
   slack: fedshq:CmawQ9tM6y8blGnkc7nC1IuT
