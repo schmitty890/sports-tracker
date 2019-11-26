@@ -48,7 +48,7 @@ class Subscribe {
           }
         }).done((data) => {
           this.$subscribedMsg.html(data.html);
-          this.$subscribedTeams.append(`<div>${team}</div>`);
+          this.$subscribedTeams.find('ol').append(`<li>${team}</li>`);
           this.fadeOut();
         });
       } else {
