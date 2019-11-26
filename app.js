@@ -133,8 +133,8 @@ app.use((req, res, next) => {
   }
   next();
 });
-app.use('/build', express.static(__dirname + '/build'));
-app.use("/public", express.static(__dirname + "/public"));
+app.use('/build', express.static(__dirname, '/build'));
+app.use('/public', express.static(__dirname, '/public'));
 
 /**
  * Primary app routes.
