@@ -51,7 +51,7 @@ class Subscribe {
         });
       } else {
         console.log('error subscribing to team :(');
-        this.$subscribedMsg.html('<div>error :(</div>');
+        this.$subscribedMsg.html('<span class="subscribed-error">error :(</span>');
         this.fadeOut();
       }
     });
@@ -60,7 +60,7 @@ class Subscribe {
   fadeOut() {
     setTimeout(() =>{
       this.$subscribedMsg.fadeOut( "slow" );;
-    }, 3000);
+    }, 100000);
   }
 }
 
