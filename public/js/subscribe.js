@@ -58,9 +58,9 @@ class Subscribe {
   }
 
   fadeOut() {
-    setTimeout(() =>{
-      this.$subscribedMsg.fadeOut( "slow" );;
-    }, 100000);
+    setTimeout(() => {
+      this.$subscribedMsg.fadeOut('slow');
+    }, 3000);
   }
 }
 
