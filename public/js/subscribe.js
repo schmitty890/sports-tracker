@@ -47,12 +47,20 @@ class Subscribe {
         }).done((data) => {
           this.$subscribedMsg.html(data.html);
           this.$subscribedTeams.append(`<div>${team}</div>`);
+          this.fadeOut();
         });
       } else {
         console.log('error subscribing to team :(');
         this.$subscribedMsg.html('<div>error :(</div>');
+        this.fadeOut();
       }
     });
+  }
+
+  fadeOut() {
+    setTimeout(() =>{
+      this.$subscribedMsg.fadeOut( "slow" );;
+    }, 3000);
   }
 }
 

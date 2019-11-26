@@ -13,14 +13,14 @@ exports.postSubscribeToTeam = (req, res, next) => {
     .then((dbUser) => {
       const returnObj = {
         dbUser,
-        html: '<div class="subscribed-success">Subscribed!</div>'
+        html: '<span class="subscribed-success">Subscribed!</span>'
       };
       res.json(returnObj);
     })
     .catch((err) => {
       const returnObj = {
         err,
-        html: '<div class="subscribed-error">Error when subscribing :(</div>'
+        html: '<span class="subscribed-error">Error when subscribing :(</span>'
       };
       res.json(returnObj);
     });
