@@ -16,9 +16,11 @@ class Subscribe {
         html = '<div>you have not subscribed to any teams yet!</div>';
       } else {
         this.$subscribedTeams.append('<div>You have subscribed to the following teams</div>');
+        html += '<ol>';
         for (let i = 0; i < data.subscribed.length; i++) {
-          html += `<div>${data.subscribed[i].body.team}</div>`;
+          html += `<li>${data.subscribed[i].body.team}</li>`;
         }
+        html += '</ol>';
       }
       this.$subscribedTeams.append(html);
     });
