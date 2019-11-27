@@ -164,7 +164,6 @@ exports.index = (req, res) => {
               }
               getCurrentLiveGameStats(getLiveDataFeeds);
               getNextMatchUp();
-
             }).catch((err) => {
               console.log(err);
             });
