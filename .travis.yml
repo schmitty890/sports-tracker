@@ -9,9 +9,8 @@ cache:
   directories:
     - "node_modules"
 sudo: false
-before_install:
+before_script:
   - npm install -g gulp-cli
-  - npm install -g gulp@3.9.1
 install:
   - npm install
 script:
