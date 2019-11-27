@@ -109,7 +109,7 @@ exports.index = (req, res) => {
                 }
               }
             }).then(() => {
-              renderDashboard();
+              // renderDashboard();
             }).catch((err) => {
               console.log(err);
             });
@@ -121,6 +121,9 @@ exports.index = (req, res) => {
          */
         const getNextMatchUp = () => {
           const subscribers = hbsObject.user.subscribed;
+          console.log('----------------------------------');
+          console.log(subscribers);
+          console.log('----------------------------------');
           const subscribersTeamIDArr = [];
           for (let i = 0; i < subscribers.length; i++) {
             subscribersTeamIDArr.push(nhlAPI.getTeamsNextMatchup(subscribers[i].body.teamID));
@@ -131,6 +134,7 @@ exports.index = (req, res) => {
               for (let i = 0; i < results.length; i++) {
                 subscribers[i].body.nextGame = results[i];
               }
+              renderDashboard();
             }).catch((err) => {
               console.log(err);
             });
@@ -163,6 +167,7 @@ exports.index = (req, res) => {
               }
               getCurrentLiveGameStats(getLiveDataFeeds);
               getNextMatchUp();
+
             }).catch((err) => {
               console.log(err);
             });
