@@ -1,1 +1,3 @@
-public/js/navigation-bar.js
+public/assets/js/template/navigation-bar.js
+build
+gulpfile.js

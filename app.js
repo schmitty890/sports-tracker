@@ -133,7 +133,10 @@ app.use((req, res, next) => {
   }
   next();
 });
-app.use('/', express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
+/* eslint-disable */
+app.use('/build', express.static(__dirname + '/build'));
+app.use('/public', express.static(__dirname + '/public'));
+/* eslint-enable */
 
 /**
  * Primary app routes.
