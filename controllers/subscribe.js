@@ -121,9 +121,6 @@ exports.index = (req, res) => {
          */
         const getNextMatchUp = () => {
           const subscribers = hbsObject.user.subscribed;
-          console.log('----------------------------------');
-          console.log(subscribers);
-          console.log('----------------------------------');
           const subscribersTeamIDArr = [];
           for (let i = 0; i < subscribers.length; i++) {
             subscribersTeamIDArr.push(nhlAPI.getTeamsNextMatchup(subscribers[i].body.teamID));
