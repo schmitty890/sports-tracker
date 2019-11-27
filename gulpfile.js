@@ -15,8 +15,8 @@ const babel = require('gulp-babel');
 
 // when served, watch files. call browser-sync
 gulp.task('serve', ['browser-sync'], function() {
-  gulp.watch('public/assets/scss/partials/*.scss', ['sass']);
-  gulp.watch('public/assets/js/*/*.js', ['concatScripts']);
+  // gulp.watch('public/assets/scss/partials/*.scss', ['sass']);
+  // gulp.watch('public/assets/js/*/*.js', ['concatScripts']);
 });
 
 // browser-sync call nodemon
