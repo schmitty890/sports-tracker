@@ -102,9 +102,5 @@
     "sinon": "^7.5.0",
     "sinon-mongoose": "^2.3.0",
     "supertest": "^5.0.0-0"
-  },
-  "engines": {
-    "node": ">=8.16.1",
-    "npm": ">=6.4.1"
   }
 }
