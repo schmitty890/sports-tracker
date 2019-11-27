@@ -109,7 +109,7 @@ exports.index = (req, res) => {
                 }
               }
             }).then(() => {
-              renderDashboard();
+              // renderDashboard();
             }).catch((err) => {
               console.log(err);
             });
@@ -131,6 +131,7 @@ exports.index = (req, res) => {
               for (let i = 0; i < results.length; i++) {
                 subscribers[i].body.nextGame = results[i];
               }
+              renderDashboard();
             }).catch((err) => {
               console.log(err);
             });
