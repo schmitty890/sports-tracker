@@ -1,0 +1,37 @@
+<div class="col-lg-6">
+  {{#each hbsObject.user.subscribed}}
+    <div class="card shadow mb-4 card--game">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary card--title">{{this.body.team}}</h6>
+      </div>
+      <div class="card-body">
+        {{#if this.body.currentDaysGame.totalGames}}
+          {{#each this.body.currentDaysGame.dates}}
+            <div>{{this.date}}</div>
+            {{#each this.games}}
+              <div class="container ">
+                {{> cards/partials/header-section}}
+                <hr>
+                {{> cards/partials/info-section}}
+                <hr>
+                {{> cards/partials/game-stats-section}}
+              </div>
+            {{/each}}
+          {{/each}}
+          {{else}}
+          {{#each this.body.nextGame.teams}}
+            {{#each this.nextGameSchedule.dates}}
+              {{#each this.games}}
+              <div class="container ">
+                {{> cards/partials/header-section}}
+                <hr>
+                {{> cards/partials/info-section}}
+              </div>
+              {{/each}}
+            {{/each}}
+          {{/each}}
+        {{/if}}
+      </div>
+    </div>
+  {{/each}}
+</div>

@@ -1,0 +1,11 @@
+<section class="card--section card--section__header">
+  <div class="row card--header__row">
+    <div class="col-12 col-md-8 card--header__title">{{this.teams.away.team.name}} at {{this.teams.home.team.name}}
+    </div>
+    <div class="col-12 col-md-4 card--header__time">
+      Gametime in {{momentFromTimeNow this.gameDate}}
+      <div class="card--game-status">Status: <span
+          class="{{addStatusClass this.status.detailedState}}">{{this.status.detailedState}}</span></div>
+    </div>
+  </div>
+</section>

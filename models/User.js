@@ -6,30 +6,17 @@ const userSchema = new mongoose.Schema({
   email: { type: String, unique: true },
   firstName: String,
   lastName: String,
+  phone: String,
   password: String,
   passwordResetToken: String,
   passwordResetExpires: Date,
   emailVerificationToken: String,
   emailVerified: Boolean,
-
-  snapchat: String,
-  facebook: String,
-  twitter: String,
-  google: String,
-  github: String,
-  instagram: String,
-  linkedin: String,
-  steam: String,
-  quickbooks: String,
-  tokens: Array,
-
-  profile: {
-    name: String,
-    gender: String,
-    location: String,
-    website: String,
-    picture: String
-  }
+  // link to comment model/table by using the ref and saving an obj id with it. it's an array of objects so that we can have many comments
+  subscribed: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Subscribe'
+  }]
 }, { timestamps: true });
 
 /**

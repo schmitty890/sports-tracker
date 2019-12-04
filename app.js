@@ -20,6 +20,12 @@ const sass = require('node-sass-middleware');
 const exphbs = require('express-handlebars');
 
 /**
+ * handlebar helpers
+ */
+const timeAndDateHBSHelpers = require('./views/helpers/timeAndDates');
+const liveGameHelpers = require('./views/helpers/liveGame');
+
+/**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
 dotenv.config({ path: '.env.example' });
@@ -27,8 +33,9 @@ dotenv.config({ path: '.env.example' });
 /**
  * Controllers (route handlers).
  */
-const homeController = require('./controllers/home');
+// const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
+const subscribeController = require('./controllers/subscribe');
 // const apiController = require('./controllers/api');
 // const contactController = require('./controllers/contact');
 
@@ -65,7 +72,14 @@ app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080);
 app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'pug');
 app.engine('handlebars', exphbs({
-  defaultLayout: 'main'
+  defaultLayout: 'main',
+  helpers: {
+    getYear: timeAndDateHBSHelpers.getYear,
+    momentFromTimeNow: timeAndDateHBSHelpers.momentFromTimeNow,
+    daysUntil: timeAndDateHBSHelpers.daysUntil,
+    addStatusClass: liveGameHelpers.addStatusClass,
+    compareStats: liveGameHelpers.compareStats
+  }
 }));
 app.set('view engine', 'handlebars');
 app.use(expressStatusMonitor());
@@ -119,19 +133,22 @@ app.use((req, res, next) => {
   }
   next();
 });
-app.use('/', express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
+/* eslint-disable */
+app.use('/build', express.static(__dirname + '/build'));
+app.use('/public', express.static(__dirname + '/public'));
+/* eslint-enable */
 
 /**
  * Primary app routes.
  */
-app.get('/', homeController.index);
+app.get('/', subscribeController.index);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
-// app.get('/forgot', userController.getForgot);
-// app.post('/forgot', userController.postForgot);
-// app.get('/reset/:token', userController.getReset);
-// app.post('/reset/:token', userController.postReset);
+app.get('/forgot', userController.getForgot);
+app.post('/forgot', userController.postForgot);
+app.get('/reset/:token', userController.getReset);
+app.post('/reset/:token', userController.postReset);
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
 // app.get('/contact', contactController.getContact);
@@ -143,6 +160,12 @@ app.post('/account/profile', passportConfig.isAuthenticated, userController.post
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
+
+/**
+ * Subscribe to teams routes.
+ */
+app.post('/subscribeToTeam/:id', passportConfig.isAuthenticated, subscribeController.postSubscribeToTeam);
+app.get('/subscribedTeams/:id', passportConfig.isAuthenticated, subscribeController.getSubscribedTeams);
 
 /**
  * API examples routes.

@@ -1,0 +1,26 @@
+<section class="card--section card--section__info">
+  <div class="row card--row__centered">
+    <div class="col">
+      <div class="card--teamname">{{this.teams.away.team.name}}</div>
+      <div class="card--record">{{this.teams.away.leagueRecord.wins}} - {{this.teams.away.leagueRecord.losses}} -
+        {{this.teams.away.leagueRecord.ot}}
+      </div>
+      {{#each this.liveStats.liveData.boxscore.teams.away.coaches}}
+        <div class="card--coach">Coach: {{this.person.fullName}}</div>
+      {{/each}}
+      
+    </div>
+    <div class="col-6 hide-tablet">
+      <div class="card--venue">Venue: {{this.venue.name}}</div>
+    </div>
+    <div class="col">
+      <div class="card--teamname">{{this.teams.home.team.name}}</div>
+      <div class="card--record">{{this.teams.home.leagueRecord.wins}} - {{this.teams.home.leagueRecord.losses}} -
+        {{this.teams.home.leagueRecord.ot}}
+      </div>
+      {{#each this.liveStats.liveData.boxscore.teams.home.coaches}}
+        <div class="card--coach">Coach: {{this.person.fullName}}</div>
+      {{/each}}
+    </div>
+  </div>
+</section>

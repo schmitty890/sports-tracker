@@ -1,0 +1,153 @@
+<!-- Account Profile Section -->
+<div class="row">
+  <!-- Content Column -->
+  <div class="col-lg-6 mb-4">
+    <!-- Project Card Example -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Hi {{hbsObject.user.firstName}}, here are your account details
+        </h6>
+      </div>
+      <div class="card-body">
+        <form action="/account/profile" method="POST">
+          <input type="hidden" name="_csrf">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label font-weight-bold text-right" for="firstName">First Name</label>
+            <div class="col-md-7">
+              <input class="form-control" type="text" name="firstName" id="firstName"
+                value="{{hbsObject.user.firstName}}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label font-weight-bold text-right" for="lastName">Last Name</label>
+            <div class="col-md-7">
+              <input class="form-control" type="text" name="lastName" id="lastName" value="{{hbsObject.user.lastName}}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label font-weight-bold text-right" for="email">Email</label>
+            <div class="col-md-7">
+              <input class="form-control" type="email" name="email" id="email" value="{{hbsObject.user.email}}">
+            </div>
+          </div>
+
+          {{!-- commenting out avatar for time being, may implement later --}}
+          {{!--         <div class="form-group row">
+                <label class="col-md-3 col-form-label font-weight-bold text-right">Gravatar</label>
+                <div class="col-sm-4"><img class="profile" src="https://gravatar.com/avatar/405fa83edf86f248782789f09898bfaf?s=200&amp;d=retro" width="100" height="100"></div>
+            </div> --}}
+          <div class="form-group">
+            <div class="offset-sm-3 col-md-7 pl-2">
+              <button class="btn btn btn-primary" type="submit"><i class="fas fa-pencil-alt fa-sm"></i>Update
+                Profile</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-body">
+        <form action="/account/password" method="POST">
+          <input type="hidden" name="_csrf" value="oQaZYDXOZPySoyQLhjGNYQ7OkeOxeE1eUKz80=">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label font-weight-bold text-right" for="password">New Password</label>
+            <div class="col-md-7">
+              <input class="form-control" type="password" name="password" id="password">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label font-weight-bold text-right" for="confirmPassword">Confirm
+              Password</label>
+            <div class="col-md-7">
+              <input class="form-control" type="password" name="confirmPassword" id="confirmPassword">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="offset-sm-3 col-md-7 pl-2">
+              <button class="btn btn-primary" type="submit"><i class="fas fa-lock fa-sm"></i>Change Password</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Column -->
+  <div class="col-lg-6 mb-4">
+    <!-- Project Card Example -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Team Selection NHL</h6>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label>select a team to subscribe to</label>
+          <select class="form-control" id="subscribe-to-team">
+            <option value="Boston Bruins" data-sport="nhl" data-team-id="6">Boston Bruins</option>
+            <option value="Buffalo Sabres" data-sport="nhl" data-team-id="7">Buffalo Sabres</option>
+            <option value="Detroit Red Wings" data-sport="nhl" data-team-id="17">Detroit Red Wings</option>
+            <option value="Florida Panthers" data-sport="nhl" data-team-id="13">Florida Panthers</option>
+            <option value="Montreal Canadiens" data-sport="nhl" data-team-id="8">Montreal Canadiens</option>
+            <option value="Ottawa Senators" data-sport="nhl" data-team-id="9">Ottawa Senators</option>
+            <option value="Tampa Bay Lightning" data-sport="nhl" data-team-id="14">Tampa Bay Lightning</option>
+            <option value="Toronto Maple Leafs" data-sport="nhl" data-team-id="10">Toronto Maple Leafs</option>
+            <option value="Carolina Hurricanes" data-sport="nhl" data-team-id="12">Carolina Hurricanes</option>
+            <option value="Columbus Blue Jackets" data-sport="nhl" data-team-id="29">Columbus Blue Jackets</option>
+            <option value="New Jersey Devils" data-sport="nhl" data-team-id="1">New Jersey Devils</option>
+            <option value="New York Islanders" data-sport="nhl" data-team-id="2">New York Islanders</option>
+            <option value="New York Rangers" data-sport="nhl" data-team-id="3">New York Rangers</option>
+            <option value="Philadelphia Flyers" data-sport="nhl" data-team-id="4">Philadelphia Flyers</option>
+            <option value="Pittsburgh Penguins" data-sport="nhl" data-team-id="5">Pittsburgh Penguins</option>
+            <option value="Washington Capitals" data-sport="nhl" data-team-id="15">Washington Capitals</option>
+            <option value="Chicago Blackhawks" data-sport="nhl" data-team-id="16">Chicago Blackhawks</option>
+            <option value="Colorado Avalanche" data-sport="nhl" data-team-id="21">Colorado Avalanche</option>
+            <option value="Dallas Stars" data-sport="nhl" data-team-id="25">Dallas Stars</option>
+            <option value="Minnesota Wild" data-sport="nhl" data-team-id="30">Minnesota Wild</option>
+            <option value="Nashville Predators" data-sport="nhl" data-team-id="18">Nashville Predators</option>
+            <option value="St. Louis Blues" data-sport="nhl" data-team-id="19">St. Louis Blues</option>
+            <option value="Winnipeg Jets" data-sport="nhl" data-team-id="52">Winnipeg Jets</option>
+            <option value="Anaheim Ducks" data-sport="nhl" data-team-id="24">Anaheim Ducks</option>
+            <option value="Arizona Coyotes" data-sport="nhl" data-team-id="53">Arizona Coyotes</option>
+            <option value="Calgary Flames" data-sport="nhl" data-team-id="20">Calgary Flames</option>
+            <option value="Edmonton Oilers" data-sport="nhl" data-team-id="22">Edmonton Oilers</option>
+            <option value="Los Angeles Kings" data-sport="nhl" data-team-id="26">Los Angeles Kings</option>
+            <option value="San Jose Sharks" data-sport="nhl" data-team-id="28">San Jose Sharks</option>
+            <option value="Vancouver Canucks" data-sport="nhl" data-team-id="23">Vancouver Canucks</option>
+            <option value="Vegas Golden Knights" data-sport="nhl" data-team-id="54">Vegas Golden Knights</option>
+          </select>
+        </div>
+        <button class="btn btn btn-primary subscribe-button">Subscribe to team</button>
+        <span id="subscribed-msg"></span>
+        <div id="subscribed-teams"></div>
+      </div>
+
+      <!-- Select Team Section Here -->
+    </div>
+  </div>
+</div>
+<!-- End Account Profile Section -->
+
+<!-- Delete Account Section -->
+<div class="row">
+  <!-- Content Column -->
+  <div class="col-lg-6 mb-4">
+    <!-- Project Card Example -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Delete your account</h6>
+      </div>
+      <div class="card-body">
+        <form action="/account/delete" method="POST"
+          onsubmit="return confirm('Are you sure you want to delete your account?');">
+          <div class="form-group">
+            <p class="offset-sm-3 col-md-7 pl-2">You can delete your account, but keep in mind this action is
+              irreversible.</p>
+            <input type="hidden" name="_csrf" value="oQaZYDXOZPySoyQLhjGNYQ7OkeOxeE1eUKz80=">
+            <div class="offset-sm-3 col-md-7 pl-2">
+              <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt fa-sm"></i>Delete my
+                account</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- End Delete Account Section -->
