@@ -40,7 +40,7 @@
     "express-status-monitor": "^1.2.7",
     "fbgraph": "^1.4.4",
     "googleapis": "^44.0.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "instagram-node": "^0.5.8",
     "jquery": "^3.4.1",
     "lastfm": "^0.9.3",
