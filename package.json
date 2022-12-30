@@ -96,7 +96,7 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
     "gulp-util": "^3.0.8",
-    "mocha": "^6.2.2",
+    "mocha": "^10.2.0",
     "nyc": "^14.1.1",
     "run-sequence": "^2.2.1",
     "sinon": "^7.5.0",
